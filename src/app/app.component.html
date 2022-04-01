@@ -1,0 +1,26 @@
+<h1>Schnick Schnack Schnuck</h1>
+<button *ngIf="spielmodus == 0" (click)="setgamemode(1)">1 Spieler</button>
+<button *ngIf="spielmodus == 0" (click)="setgamemode(2)">2 Spieler</button>
+<div *ngIf="spielmodus == 1">
+  <h2>{{ ergebnis }}</h2>
+  <h3 *ngIf="nutzerwahl">Der Spieler Hatte {{ nutzerwahl }}</h3>
+  <h3 *ngIf="gegnerwahl">Der {{ spielertyp }} Hatte {{ gegnerwahl }}</h3>
+</div>
+
+<div *ngIf="spielmodus == 2">
+  <h2 *ngIf="gewinneranzeige" class="winner">
+    {{ gewinneranzeige }} hat das Spiel Gewonnen
+  </h2>
+  <h2 *ngIf="ergebnis && !gewinneranzeige">
+    {{ gewinner }} hat die Runde gewonnen
+  </h2>
+  <h3 *ngIf="nutzerwahl">Der Spieler Hatte {{ nutzerwahl }}</h3>
+  <h3 *ngIf="gegnerwahl">Der {{ spielertyp }} Hatte {{ gegnerwahl }}</h3>
+</div>
+<div *ngIf="spielmodus != 0">
+  <button (click)="auswahlfunktion(0)">Stein</button>
+  <button (click)="auswahlfunktion(1)">Schere</button>
+  <button (click)="auswahlfunktion(2)">Papier</button>
+  <button *ngIf="nutzerauswahl < 4" (click)="startspiel()">Starten</button>
+</div>
+<button *ngIf="spielmodus" (click)="menu()">Menü</button>
